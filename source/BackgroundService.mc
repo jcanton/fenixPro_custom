@@ -20,7 +20,7 @@ class BackgroundService extends Sys.ServiceDelegate {
          if (pendingWebRequests["OpenWeatherMapCurrent"] != null) {
             var api_key = App.getApp().getProperty("openweathermap_api");
             if (api_key.length() == 0) {
-               api_key = "333d6a4283794b870f5c717cc48890b5"; // default apikey
+               api_key = "1cb1d74009767c92444cc93abfc31ef5"; // default apikey
             }
             makeWebRequest(
                "https://api.openweathermap.org/data/2.5/weather",
@@ -28,7 +28,7 @@ class BackgroundService extends Sys.ServiceDelegate {
                   "lat" => App.getApp().getProperty("LastLocationLat"),
                   "lon" => App.getApp().getProperty("LastLocationLng"),
                   "appid" => api_key,
-                  "units" => "metric", // Celcius.
+                  "units" => "metric", // Celsius.
                },
                method(:onReceiveOpenWeatherMapCurrent)
             );

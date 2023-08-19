@@ -339,12 +339,14 @@ class HuwaiiView extends WatchUi.WatchFace {
                Application.getApp().getProperty("text_color");
             var accent_color =
                Application.getApp().getProperty("accent_color");
+            var ticks_color =
+               Application.getApp().getProperty("ticks_color");
             var bar_background_color =
                Application.getApp().getProperty(
                   "bar_background_color"
                );
-            var indicator_ticks_color =
-               Application.getApp().getProperty("indicator_ticks_color");
+            var bar_indicator_color =
+               Application.getApp().getProperty("bar_indicator_color");
             var bar_graph_color_top = Application.getApp().getProperty(
                "bar_graph_color_top"
             );
@@ -356,8 +358,9 @@ class HuwaiiView extends WatchUi.WatchFace {
                background_color != gbackground_color ||
                text_color != gmain_color ||
                accent_color != gsecondary_color ||
+               ticks_color != garc_color ||
                bar_background_color != gbar_color_back ||
-               indicator_ticks_color != gbar_color_indi ||
+               bar_indicator_color != gbar_color_indi ||
                bar_graph_color_top != gbar_color_0 ||
                bar_graph_color_bottom != gbar_color_1
             ) {
@@ -368,9 +371,9 @@ class HuwaiiView extends WatchUi.WatchFace {
                // accent (dividers between complications)
                gsecondary_color = accent_color;
                // ticks
-               garc_color = indicator_ticks_color;
+               garc_color = ticks_color;
                // indicator pointing at the bar
-               gbar_color_indi = indicator_ticks_color;
+               gbar_color_indi = bar_indicator_color;
                // bar background
                gbar_color_back = bar_background_color;
                // bar foreground/graph (top)

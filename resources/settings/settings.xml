@@ -1,6 +1,7 @@
 <settings>
     <setting propertyKey="@Properties.theme_code" title="@Strings.theme_code">
         <settingConfig type="list">
+        	<listEntry value="18">@Strings.theme_custom</listEntry>
         	<listEntry value="0">@Strings.theme_dark</listEntry>
         	<listEntry value="1">@Strings.theme_light</listEntry>
         	<listEntry value="2">@Strings.theme_ocean</listEntry>
@@ -17,7 +18,6 @@
         	<listEntry value="15">@Strings.theme_camo</listEntry>
         	<listEntry value="16">@Strings.theme_solar</listEntry>
         	<listEntry value="17">@Strings.theme_lime</listEntry>
-        	<listEntry value="18">@Strings.theme_custom</listEntry>
         </settingConfig>
     </setting>
 
@@ -113,7 +113,30 @@
         </settingConfig>
     </setting>
 
-    <setting propertyKey="@Properties.indicator_ticks_color" title="@Strings.indicator_ticks_color">
+    <setting propertyKey="@Properties.ticks_color" title="@Strings.ticks_color">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.bar_indicator_color" title="@Strings.bar_indicator_color">
         <settingConfig type="list">
         	<listEntry value="0">@Strings.black</listEntry>
         	<listEntry value="16777215">@Strings.white</listEntry>

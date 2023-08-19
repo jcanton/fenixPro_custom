@@ -146,7 +146,7 @@
     <string id="openweathermap_api">OpenWeatherMap API key, read FAQs section for more info</string>
 
     <!-- Theme settings -->
-    <string id="theme_code">Theme color</string>
+    <string id="theme_code">Theme (overrides custom colors)</string>
     <string id="theme_dark">Dark</string>
     <string id="theme_light">Light</string>
     <string id="theme_ocean">Ocean</string>
@@ -171,8 +171,9 @@
     <string id="background_color">Background color</string>
     <string id="text_color">Text color</string>
     <string id="accent_color">Accent color</string>
+    <string id="ticks_color">Ticks color</string>
     <string id="bar_background_color">Bar background color</string>
-    <string id="indicator_ticks_color">Bar indicator and ticks color</string>
+    <string id="bar_indicator_color">Bar indicator color</string>
     <string id="bar_graph_color_top">Top bar/graph color</string>
     <string id="bar_graph_color_bottom">Bottom bar/graph color</string>
 
