@@ -1,5 +1,4 @@
 <settings>
-	
     <setting propertyKey="@Properties.theme_code" title="@Strings.theme_code">
         <settingConfig type="list">
         	<listEntry value="0">@Strings.theme_dark</listEntry>
@@ -18,17 +17,173 @@
         	<listEntry value="15">@Strings.theme_camo</listEntry>
         	<listEntry value="16">@Strings.theme_solar</listEntry>
         	<listEntry value="17">@Strings.theme_lime</listEntry>
+        	<listEntry value="18">@Strings.theme_custom</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.background_color" title="@Strings.background_color">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.text_color" title="@Strings.text_color">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.accent_color" title="@Strings.accent_color">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.bar_background_color" title="@Strings.bar_background_color">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.indicator_ticks_color" title="@Strings.indicator_ticks_color">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.bar_graph_color_top" title="@Strings.bar_graph_color_top">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.bar_graph_color_bottom" title="@Strings.bar_graph_color_bottom">
+        <settingConfig type="list">
+        	<listEntry value="0">@Strings.black</listEntry>
+        	<listEntry value="16777215">@Strings.white</listEntry>
+        	<listEntry value="16711680">@Strings.red</listEntry>
+        	<listEntry value="5570560">@Strings.red_dark</listEntry>
+        	<listEntry value="16711765">@Strings.pink</listEntry>
+        	<listEntry value="65535">@Strings.cyan</listEntry>
+        	<listEntry value="255">@Strings.blue</listEntry>
+        	<listEntry value="43775">@Strings.blue_pale</listEntry>
+        	<listEntry value="85">@Strings.blue_dark</listEntry>
+        	<listEntry value="5614080">@Strings.green</listEntry>
+        	<listEntry value="65280">@Strings.green_lime</listEntry>
+        	<listEntry value="21760">@Strings.green_dark</listEntry>
+        	<listEntry value="5592320">@Strings.green_olive</listEntry>
+        	<listEntry value="16776960">@Strings.yellow</listEntry>
+        	<listEntry value="16733440">@Strings.orange</listEntry>
+        	<listEntry value="11162880">@Strings.brown</listEntry>
+        	<listEntry value="11184810">@Strings.gray</listEntry>
+        	<listEntry value="5592405">@Strings.gray_dark</listEntry>
         </settingConfig>
     </setting>
     
 	<setting propertyKey="@Properties.power_save_mode" title="@Strings.power_save_mode">
         <settingConfig type="boolean" />
-    </setting>
-    <setting propertyKey="@Properties.sleep_time_behaviour" title="@Strings.sleep_time_behaviour">
-        <settingConfig type="list">
-        	<listEntry value="0">@Strings.default_render</listEntry>
-        	<listEntry value="1">@Strings.no_render</listEntry>
-        </settingConfig>
     </setting>
     
     <setting propertyKey="@Properties.always_on_second" title="@Strings.always_on_second">
@@ -79,8 +234,12 @@
         	<listEntry value="0">@Strings.empty</listEntry>
         	<listEntry value="1">@Strings.ticks_style_arc</listEntry>
         	<listEntry value="2">@Strings.ticks_style_marks</listEntry>
+        	<listEntry value="3">@Strings.ticks_style_marks_top_gap</listEntry>
+        	<listEntry value="4">@Strings.ticks_style_marks_bottom_gap</listEntry>
+        	<listEntry value="5">@Strings.ticks_style_marks_top_bottom_gap</listEntry>
         </settingConfig>
     </setting>
+
     <setting propertyKey="@Properties.comp12h" title="@Strings.comp12h">
         <settingConfig type="list">
         	<listEntry value="9">@Strings.empty</listEntry>
@@ -96,14 +255,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -111,6 +276,9 @@
             <listEntry value="25">@Strings.weather</listEntry>
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="31">@Strings.bodybattstress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp2h" title="@Strings.comp2h">
@@ -128,14 +296,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -143,6 +317,9 @@
             <listEntry value="25">@Strings.weather</listEntry>
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="31">@Strings.bodybattstress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp4h" title="@Strings.comp4h">
@@ -160,14 +337,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -175,6 +358,9 @@
             <listEntry value="25">@Strings.weather</listEntry>
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="31">@Strings.bodybattstress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp6h" title="@Strings.comp6h">
@@ -192,14 +378,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -207,6 +399,9 @@
             <listEntry value="25">@Strings.weather</listEntry>
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="31">@Strings.bodybattstress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp8h" title="@Strings.comp8h">
@@ -224,14 +419,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -239,6 +440,9 @@
             <listEntry value="25">@Strings.weather</listEntry>
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="31">@Strings.bodybattstress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp10h" title="@Strings.comp10h">
@@ -256,14 +460,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -271,6 +481,9 @@
             <listEntry value="25">@Strings.weather</listEntry>
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="31">@Strings.bodybattstress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.compbart" title="@Strings.compbart">
@@ -288,14 +501,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -304,6 +523,8 @@
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="27">@Strings.ctext</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.compbarb" title="@Strings.compbarb">
@@ -321,14 +542,20 @@
             <listEntry value="4">@Strings.movebar</listEntry>
             <listEntry value="5">@Strings.steps</listEntry>
             <listEntry value="6">@Strings.active</listEntry>
+            <listEntry value="36">@Strings.moderate</listEntry>
+            <listEntry value="37">@Strings.vigorous</listEntry>
             <listEntry value="10">@Strings.notification</listEntry>
             <listEntry value="11">@Strings.alarm</listEntry>
             <listEntry value="20">@Strings.phonestatus</listEntry>
             <listEntry value="16">@Strings.groupnoti</listEntry>
             <listEntry value="12">@Strings.altitude</listEntry>
             <listEntry value="13">@Strings.temperature</listEntry>
+            <listEntry value="32">@Strings.temperature_garmin</listEntry>
             <listEntry value="23">@Strings.temperature_out</listEntry>
             <listEntry value="24">@Strings.temperature_hl</listEntry>
+            <listEntry value="35">@Strings.temperature_hl_garmin</listEntry>
+            <listEntry value="33">@Strings.precipitation_garmin</listEntry>
+            <listEntry value="34">@Strings.weather_garmin</listEntry>
             <listEntry value="14">@Strings.sunriseset</listEntry>
             <listEntry value="15">@Strings.floorclimbed</listEntry>
             <listEntry value="18">@Strings.barometer</listEntry>
@@ -337,6 +564,8 @@
             <listEntry value="26">@Strings.ampm</listEntry>
             <listEntry value="27">@Strings.ctext</listEntry>
             <listEntry value="28">@Strings.wind</listEntry>
+            <listEntry value="29">@Strings.bodybattery</listEntry>
+            <listEntry value="30">@Strings.stress</listEntry>
         </settingConfig>
     </setting>
     
@@ -347,6 +576,8 @@
             <listEntry value="2">@Strings.altitude</listEntry>
             <listEntry value="3">@Strings.barometer</listEntry>
             <listEntry value="4">@Strings.temperature</listEntry>
+            <listEntry value="5">@Strings.bodybattery</listEntry>
+            <listEntry value="6">@Strings.stress</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.compgraphb" title="@Strings.compgraphb">
@@ -356,6 +587,8 @@
             <listEntry value="2">@Strings.altitude</listEntry>
             <listEntry value="3">@Strings.barometer</listEntry>
             <listEntry value="4">@Strings.temperature</listEntry>
+            <listEntry value="5">@Strings.bodybattery</listEntry>
+            <listEntry value="6">@Strings.stress</listEntry>
         </settingConfig>
     </setting>
     <!-- <setting propertyKey="@Properties.baro_period" title="@Strings.baro_period">
@@ -429,10 +662,13 @@
         	<listEntry value="1">@Strings.barometer_unit_1</listEntry>
         </settingConfig>
     </setting>
+    <setting propertyKey="@Properties.ctext_input" title="@Strings.ctext">
+        <settingConfig type="alphaNumeric" />
+    </setting>
     <setting propertyKey="@Properties.openweathermap_api" title="@Strings.openweathermap_api">
         <settingConfig type="alphaNumeric" />
     </setting>
-    <setting propertyKey="@Properties.ctext_input" title="@Strings.ctext">
-        <settingConfig type="alphaNumeric" />
+    <setting propertyKey="@Properties.enable_buffering" title="@Strings.enable_buffering">
+        <settingConfig type="boolean" />
     </setting>
 </settings>
