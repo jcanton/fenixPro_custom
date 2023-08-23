@@ -26,7 +26,7 @@
 
     <property id="ticks_style" type="number">0</property>
     <property id="render_arc_line" type="boolean">true</property>
-    
+
     <property id="comp12h" type="number">1</property>
     <property id="comp2h" type="number">16</property>
     <property id="comp4h" type="number">4</property>
@@ -36,24 +36,26 @@
 
     <property id="compbart" type="number">25</property>
     <property id="compbarb" type="number">5</property>
-    
+
     <property id="compgrapht" type="number">0</property>
     <property id="compgraphb" type="number">0</property>
-    
+
     <property id="baro_period" type="number">3</property>
-    
+
     <property id="utc_timezone" type="number">0</property>
     <property id="utc_shift" type="boolean">false</property>
     <property id="date_format" type="number">5</property>
-    
+
     <property id="battery_format" type="number">0</property>
-    
+
     <property id="countdown_date" type="number">1546300800</property>
     <property id="enable_buffering" type="boolean">false</property>
-    
+
     <property id="barometer_unit" type="number">0</property>
-    
+
     <property id="ctext_input" type="string"></property>
 
-    <property id="openweathermap_api" type="string">1cb1d74009767c92444cc93abfc31ef5</property>
+    <property id="openweathermap_api" type="string"></property>
+    <property id="iqair_api" type="string"></property>
+
 </properties>

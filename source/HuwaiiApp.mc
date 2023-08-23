@@ -7,6 +7,8 @@ using Toybox.Time;
 using Toybox.Math;
 using Toybox.Time.Gregorian as Date;
 
+import Toybox.Lang;
+
 // In-memory current location.
 // Previously persisted in App.Storage, but now persisted in Object Store due to #86 workaround for App.Storage firmware bug.
 // Current location retrieved/saved in checkPendingWebRequests().
@@ -36,6 +38,8 @@ class HuwaiiApp extends Application.AppBase {
    var mView;
    var days;
    var months;
+
+   var _currentFieldIds as Array<Number> = {};
 
    function initialize() {
       AppBase.initialize();
@@ -72,6 +76,7 @@ class HuwaiiApp extends Application.AppBase {
 
    // Return the initial view of your application here
    function getInitialView() {
+      updateCurrentDataFieldIds();
       mView = new HuwaiiView();
       return [mView];
    }
@@ -82,6 +87,8 @@ class HuwaiiApp extends Application.AppBase {
 
    function onSettingsChanged() {
       // triggered by settings change in GCM
+      updateCurrentDataFieldIds();
+
       if (HuwaiiApp has :checkPendingWebRequests) {
          // checkPendingWebRequests() can be excluded to save memory.
          checkPendingWebRequests();
@@ -97,68 +104,24 @@ class HuwaiiApp extends Application.AppBase {
    // Currently called on layout initialisation, when settings change, and on exiting sleep.
    (:background_method)
    function checkPendingWebRequests() {
-      if (Application.getApp().getProperty("openweathermap_api").length() == 0) {
-         // OpenWeatherMap API key is not set, skip all of this.
-         return;
-      }
-      // Attempt to update current location, to be used by Sunrise/Sunset, and Weather.
-      // If current location available from current activity, save it in case it goes "stale" and can not longer be retrieved.
-      var location = Activity.getActivityInfo().currentLocation;
-      if (location) {
-         // Save location to globals
-         location = location.toDegrees(); // Array of Doubles.
-         gLocationLat = location[0].toFloat();
-         gLocationLng = location[1].toFloat();
-
-         Application.getApp().setProperty("LastLocationLat", gLocationLat);
-         Application.getApp().setProperty("LastLocationLng", gLocationLng);
-         // If current location is not available, read stored value from Object Store, being careful not to overwrite a valid
-         // in-memory value with an invalid stored one.
-      } else {
-         var lat = Application.getApp().getProperty("LastLocationLat");
-         if (lat != null) {
-            gLocationLat = lat;
-         }
-
-         var lng = Application.getApp().getProperty("LastLocationLng");
-         if (lng != null) {
-            gLocationLng = lng;
-         }
-      }
+      // Update last known location
+      updateLastLocation();
 
       if (!(Sys has :ServiceDelegate)) {
          return;
       }
 
-      var pendingWebRequests = getProperty("PendingWebRequests");
-      if (pendingWebRequests == null) {
-         pendingWebRequests = {};
+      var pendingWebRequests = {};
+
+      if (needWeatherDataUpdate()) {
+         pendingWebRequests[$.DATA_TYPE_WEATHER] = true;
       }
 
-      // 2. Weather:
-      // Location must be available, weather or humidity (#113) data field must be shown.
-      if (gLocationLat != null) {
-         var owmCurrent = getProperty("OpenWeatherMapCurrent");
-
-         // No existing data.
-         if (owmCurrent == null) {
-            pendingWebRequests["OpenWeatherMapCurrent"] = true;
-            // Successfully received weather data.
-         } else if (owmCurrent["cod"] == 200) {
-            // Existing data is older than 30 mins.
-            // TODO: Consider requesting weather at sunrise/sunset to update weather icon.
-            if (
-               Time.now().value() > owmCurrent["dt"] + 900 ||
-               // Existing data not for this location.
-               // Not a great test, as a degree of longitude varies betwee 69 (equator) and 0 (pole) miles, but simpler than
-               // true distance calculation. 0.02 degree of latitude is just over a mile.
-               (gLocationLat - owmCurrent["lat"]).abs() > 0.02 ||
-               (gLocationLng - owmCurrent["lon"]).abs() > 0.02
-            ) {
-               pendingWebRequests["OpenWeatherMapCurrent"] = true;
-            }
-         }
+      if (needAirQualityDataUpdate()) {
+         pendingWebRequests[$.DATA_TYPE_AIR_QUALITY] = true;
       }
+
+      setProperty("PendingWebRequests", pendingWebRequests);
 
       // If there are any pending requests:
       if (pendingWebRequests.keys().size() > 0) {
@@ -173,8 +136,135 @@ class HuwaiiApp extends Application.AppBase {
             Bg.registerForTemporalEvent(Time.now());
          }
       }
+   }
 
-      setProperty("PendingWebRequests", pendingWebRequests);
+   //! Populates a list of all the data field ids in use
+   function updateCurrentDataFieldIds() as Void {
+      var fieldIds = [
+         getComplicationSettingDataKey(12),
+         getComplicationSettingDataKey(10),
+         getComplicationSettingDataKey(2),
+         getComplicationSettingDataKey(4),
+         getComplicationSettingDataKey(6),
+         getComplicationSettingDataKey(8),
+         getBarDataComplicationSettingDataKey(0),
+         getBarDataComplicationSettingDataKey(1),
+         $.getGraphComplicationDataKey(0),
+         $.getGraphComplicationDataKey(1)
+      ];
+
+      _currentFieldIds = fieldIds;
+   }
+
+   function isAnyDataFieldsInUse(fieldIds as Array<Number>) {
+      for (var i =0; i < fieldIds.size(); i++) {
+         var id = fieldIds[i];
+         if (_currentFieldIds.indexOf(id) != -1) {
+            return true;
+         }
+      }
+      return false;
+   }
+
+   function updateLastLocation() as Void {
+      // Attempt to update current location, to be used by Sunrise/Sunset, Weather, Air Quality.
+      // If current location available from current activity, save it in case it goes "stale" and can not longer be retrieved.
+      var location = Activity.getActivityInfo().currentLocation;
+      if (location) {
+         // Save current location to globals
+         location = location.toDegrees(); // Array of Doubles.
+         gLocationLat = location[0].toFloat();
+         gLocationLng = location[1].toFloat();
+
+         Application.getApp().setProperty("LastLocationLat", gLocationLat);
+         Application.getApp().setProperty("LastLocationLng", gLocationLng);
+      } else {
+         // current location is not available, read stored value from Object Store, being careful not to overwrite a valid
+         // in-memory value with an invalid stored one.
+         var lat = Application.getApp().getProperty("LastLocationLat");
+         var lng = Application.getApp().getProperty("LastLocationLng");
+         if ((lat != null) && (lng != null)) {
+            gLocationLat = lat;
+            gLocationLng = lng;
+         }
+      }
+   }
+
+   function needWeatherDataUpdate() as Boolean {
+      // OpenWeatherMap data field must be shown.
+      if (!isAnyDataFieldsInUse( [FIELD_TYPE_TEMPERATURE_HL, FIELD_TYPE_TEMPERATURE_OUT, FIELD_TYPE_WEATHER, FIELD_TYPE_WIND] )) {
+         return false;
+      }
+
+      // Location must be available
+      if ((gLocationLat == null) || (gLocationLng == null)) {
+         return false;
+      }
+
+      var lastData = getProperty($.DATA_TYPE_WEATHER);
+
+      if ((lastData == null) || (lastData["clientTs"] == null)) {
+         // No existing data.
+         return true;
+      } else if (lastData["cod"] == 200) {
+         // Successfully received weather data.
+         // TODO: Consider requesting weather at sunrise/sunset to update weather icon.
+         if (
+            // Existing data is older than 15 mins.
+            // Note: We use clientTs as we do not *know* how often weather data is updated (typically hourly)
+            Time.now().value() > (lastData["clientTs"] + (15 * 60)) ||
+            // Existing data not for this location.
+            // Not a great test, as a degree of longitude varies betwee 69 (equator) and 0 (pole) miles, but simpler than
+            // true distance calculation. 0.02 degree of latitude is just over a mile.
+            (gLocationLat - lastData["lat"]).abs() > 0.02 ||
+            (gLocationLng - lastData["lon"]).abs() > 0.02) {
+            return true;
+         }
+      } else {
+         // Retry on error
+         return true;
+      }
+   }
+
+   function needAirQualityDataUpdate() as Boolean {
+      // AirQuality data field must be shown.
+      if (!isAnyDataFieldsInUse( [FIELD_TYPE_AIR_QUALITY] )) {
+         return false;
+      }
+
+      // Check data validity
+      var lastData = getProperty($.DATA_TYPE_AIR_QUALITY);
+      if (  (
+               // No valid data.
+               (lastData == null) || (lastData["clientTs"] == null)
+            ) || (
+               // Existing data is older than 30 mins.
+               // Note: We use clientTs as we do not *know* how often weather data is updated (typically hourly)
+               Time.now().value() > (lastData["clientTs"] + (30 * 60))
+            )
+      ) {
+         return true;
+      }
+
+      // Check location
+      // Note: As we use "Nearest City" API, we expect there to be some distance between user and location returned from API.
+      if (  (
+               // Current location data valid
+               (gLocationLat != null) && (gLocationLat != null)
+            ) && (
+               // Existing data not for this location.
+               // Not a great test, as a degree of longitude varies betwee 69 (equator) and 0 (pole) miles, but simpler than
+               // true distance calculation. 0.145 degree of latitude is 10 mile.
+               // Note as API is using "Nearest City" we use 10 mile resolution before faster update
+               ((gLocationLat - lastData["lat"]).abs() > 0.145) ||
+               ((gLocationLng - lastData["lon"]).abs() > 0.145)
+            )
+      ) {
+         return true;
+      }
+
+      // Data still valid
+      return false;
    }
 
    (:background_method)
@@ -186,29 +276,27 @@ class HuwaiiApp extends Application.AppBase {
    // On success, clear appropriate pendingWebRequests flag.
    // data is Dictionary with single key that indicates the data type received. This corresponds with Object Store and
    // pendingWebRequests keys.
-   (:background_method)
    function onBackgroundData(data) {
       var pendingWebRequests = getProperty("PendingWebRequests");
       if (pendingWebRequests == null) {
          pendingWebRequests = {};
       }
 
-      var type = data.keys()[0]; // Type of received data.
-      var storedData = getProperty(type);
-      var receivedData = data[type]; // The actual data received: strip away type key.
+      var keys = data.keys();
+      for(var i=0; i< keys.size(); i++) {
+         var type = keys[i];
 
-      // No value in showing any HTTP error to the user, so no need to modify stored data.
-      // Leave pendingWebRequests flag set, and simply return early.
-      if (receivedData["httpError"]) {
-         return;
+         var storedData = getProperty(type);
+         var receivedData = data[type]; // The actual data received: strip away type key.
+
+         // New data received: clear pendingWebRequests flag and overwrite stored data.
+         pendingWebRequests.remove(type);
+         setProperty("PendingWebRequests", pendingWebRequests);
+         setProperty(type, receivedData);
       }
 
-      // New data received: clear pendingWebRequests flag and overwrite stored data.
-      storedData = receivedData;
-      pendingWebRequests.remove(type);
+      // Save list of any remaining background requests
       setProperty("PendingWebRequests", pendingWebRequests);
-      setProperty(type, storedData);
-
       Ui.requestUpdate();
    }
 

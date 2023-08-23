@@ -5,6 +5,10 @@ using Toybox.Activity;
 using Toybox.ActivityMonitor;
 using Toybox.Application;
 
+function getComplicationSettingDataKey(angle) {
+   return Application.getApp().getProperty("comp" + angle + "h");
+}
+
 class Complication extends ArcTextComplication {
    var dt_field;
    var field_type;

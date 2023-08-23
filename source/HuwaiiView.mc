@@ -435,7 +435,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 
    function removeAllFonts() {
       View.findDrawableById("analog").removeFont();
-      View.findDrawableById("digital").removeFont(); 
+      View.findDrawableById("digital").removeFont();
    }
 
    function checkBackgroundRequest() {

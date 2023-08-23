@@ -133,8 +133,12 @@ class WeatherField extends BaseDataField {
          if (description != null) {
             return description + " " + value;
          }
+      } else if ((gLocationLat == null) || (gLocationLng == null)) {
+         return "NO LOCN";
+      } else {
+         return "--";
       }
-      return "--";
+
    }
 }
 

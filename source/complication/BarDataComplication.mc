@@ -5,6 +5,16 @@ using Toybox.Activity;
 using Toybox.ActivityMonitor;
 using Toybox.Application;
 
+function getBarDataComplicationSettingDataKey(position) {
+   if (position == 0) {
+      // upper
+      return Application.getApp().getProperty("compbart");
+   } else if (position == 1) {
+      // lower
+      return Application.getApp().getProperty("compbarb");
+   }
+}
+
 class BarDataComplication extends BarComplication {
    var dt_field;
    var field_type;

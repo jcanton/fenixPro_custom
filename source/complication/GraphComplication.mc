@@ -8,6 +8,14 @@ using Toybox.Activity as Activity;
 using Toybox.ActivityMonitor as ActivityMonitor;
 using Toybox.SensorHistory as SensorHistory;
 
+function getGraphComplicationDataKey(position) {
+      if (position == 0) {
+         return Application.getApp().getProperty("compgrapht");
+      } else {
+         return Application.getApp().getProperty("compgraphb");
+      }
+   }
+
 class GraphComplication extends Ui.Drawable {
    hidden var position;
    hidden var position_x, position_y;

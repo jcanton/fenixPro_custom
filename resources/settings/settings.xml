@@ -302,6 +302,7 @@
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
             <listEntry value="31">@Strings.bodybattstress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp2h" title="@Strings.comp2h">
@@ -343,6 +344,7 @@
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
             <listEntry value="31">@Strings.bodybattstress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp4h" title="@Strings.comp4h">
@@ -384,6 +386,7 @@
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
             <listEntry value="31">@Strings.bodybattstress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp6h" title="@Strings.comp6h">
@@ -425,6 +428,7 @@
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
             <listEntry value="31">@Strings.bodybattstress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp8h" title="@Strings.comp8h">
@@ -466,6 +470,7 @@
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
             <listEntry value="31">@Strings.bodybattstress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.comp10h" title="@Strings.comp10h">
@@ -507,6 +512,7 @@
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
             <listEntry value="31">@Strings.bodybattstress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.compbart" title="@Strings.compbart">
@@ -548,6 +554,7 @@
             <listEntry value="28">@Strings.wind</listEntry>
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.compbarb" title="@Strings.compbarb">
@@ -589,6 +596,7 @@
             <listEntry value="28">@Strings.wind</listEntry>
             <listEntry value="29">@Strings.bodybattery</listEntry>
             <listEntry value="30">@Strings.stress</listEntry>
+            <listEntry value="38">@Strings.airquality</listEntry>
         </settingConfig>
     </setting>
     
@@ -689,6 +697,9 @@
         <settingConfig type="alphaNumeric" />
     </setting>
     <setting propertyKey="@Properties.openweathermap_api" title="@Strings.openweathermap_api">
+        <settingConfig type="alphaNumeric" />
+    </setting>
+    <setting propertyKey="@Properties.iqair_api" title="@Strings.iqair_api">
         <settingConfig type="alphaNumeric" />
     </setting>
     <setting propertyKey="@Properties.enable_buffering" title="@Strings.enable_buffering">

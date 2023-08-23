@@ -94,6 +94,7 @@
     <string id="bodybattery">Body Battery</string>
     <string id="stress">Stress</string>
     <string id="bodybattstress">Body Battery and Stress Combined</string>
+    <string id="airquality">Air Quality Index</string>
     
     <!-- Date and time settings -->
     <string id="date_format">Date format</string>
@@ -144,6 +145,9 @@
 
     <!-- Openweather Key -->
     <string id="openweathermap_api">OpenWeatherMap API key, read FAQs section for more info</string>
+
+    <!-- IQAir (Air Quality) API Key -->
+    <string id="iqair_api">IQAir (Air Quality) API key, read FAQs section for more info</string>
 
     <!-- Theme settings -->
     <string id="theme_code">Theme (overrides custom colors)</string>

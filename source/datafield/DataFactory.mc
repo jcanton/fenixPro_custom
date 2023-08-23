@@ -55,6 +55,7 @@ enum /* FIELD_TYPES */ {
 
    FIELD_TYPE_MODERATE = 36,
    FIELD_TYPE_VIGOROUS,
+   FIELD_TYPE_AIR_QUALITY,
 }
 
 function buildFieldObject(type) {
@@ -134,6 +135,8 @@ function buildFieldObject(type) {
       return new WeatherGarminField(FIELD_TYPE_WEATHER_GARMIN);
    } else if (type == FIELD_TYPE_TEMPERATURE_HL_GARMIN) {
       return new TemperatureHLGarminField(FIELD_TYPE_TEMPERATURE_HL_GARMIN);
+   } else if (type == FIELD_TYPE_AIR_QUALITY) {
+      return new AirQualityField(FIELD_TYPE_AIR_QUALITY);
    }
 
    return new EmptyDataField(FIELD_TYPE_EMPTY);
