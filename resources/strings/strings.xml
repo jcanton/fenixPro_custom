@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">Infocal Custom</string>
+    <string id="AppName">Infocal 2023</string>
 
     <!-- Basic settings -->
     <string id="power_save_mode">Power saving mode (refresh per minute)</string>
@@ -8,11 +8,11 @@
     <string id="always_on_heart">Always-on heart rate (digital only)</string>
 
     <string id="minimal_data">Do not abbreviate large numbers</string>
-    
+
     <string id="force_date_english">Force date to English (prevent rectangle on unsupported chars)</string>
 
     <string id="enable_buffering">Enable buffering (try toggling this if the watchface crashes constantly)</string>
-    
+
     <!-- Custom countdown settings -->
     <string id="countdown_date">Date for countdown</string>
     <string id="countdown">Countdown to event</string>
@@ -49,13 +49,13 @@
     <string id="comp6h">6h complication</string>
     <string id="comp8h">8h complication</string>
     <string id="comp10h">10h complication</string>
-    
+
     <string id="compbart">Top bar complication</string>
     <string id="compbarb">Bottom bar complication</string>
-    
+
     <string id="compgrapht">Top graph complication</string>
     <string id="compgraphb">Bottom graph complication</string>
-    
+
     <string id="empty">Empty</string>
     <string id="battery">Battery</string>
     <string id="calories">Calories total-active (experimental)</string>
@@ -70,7 +70,7 @@
     <string id="date">Date</string>
     <string id="time">Digital time</string>
     <string id="time_secondary">Digital time (secondary timezone)</string>
-    
+
     <string id="notification">Notification count</string>
     <string id="alarm">Alarm count</string>
     <string id="phonestatus">Phone connection status</string>
@@ -95,7 +95,7 @@
     <string id="stress">Stress</string>
     <string id="bodybattstress">Body Battery and Stress Combined</string>
     <string id="airquality">Air Quality Index</string>
-    
+
     <!-- Date and time settings -->
     <string id="date_format">Date format</string>
     <string id="datef1">ddd d (TUE 2)</string>
@@ -105,7 +105,7 @@
     <string id="datef31">mm.dd.yy (9.2.19)</string>
     <string id="datef4">dd mmm (2 OCT)</string>
     <string id="datef41">mmm dd (OCT 2)</string>
-    
+
     <string id="utc_timezone">Secondary timezone</string>
     <string id="utc_shift">Shift timezone for +30min</string>
     <string id="utc0">UTC 0</string>
@@ -133,12 +133,12 @@
     <string id="utc10m">UTC -10</string>
     <string id="utc11m">UTC -11</string>
     <string id="utc12m">UTC -12</string>
-    
+
     <!-- Unit settings -->
     <string id="battery_format">Battery format</string>
     <string id="battery_format_1">Percent</string>
     <string id="battery_format_2">Days left (needs at least 1 hour left to work)</string>
-    
+
     <string id="barometer_unit">Barometer Unit</string>
     <string id="barometer_unit_0">Hector Pascal (Pa)</string>
     <string id="barometer_unit_1">Inches of Mercury (inHg)</string>
