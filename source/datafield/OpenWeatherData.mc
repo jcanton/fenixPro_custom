@@ -15,7 +15,7 @@ class TemparatureHLField extends BaseDataField {
          var settings = Sys.getDeviceSettings();
          var temp_min = weather_data["temp_min"];
          var temp_max = weather_data["temp_max"];
-         var unit = "°C";
+         //var unit = "°C";
          if (settings.temperatureUnits == System.UNIT_STATUTE) {
             temp_min = temp_min * (9.0 / 5) + 32; // Convert to Farenheit: ensure floating point division.
             temp_max = temp_max * (9.0 / 5) + 32; // Convert to Farenheit: ensure floating point division.
@@ -117,7 +117,7 @@ class WeatherField extends BaseDataField {
 
    function cur_label(value) {
       // WEATHER
-      var need_minimal = App.getApp().getProperty("minimal_data");
+      //var need_minimal = App.getApp().getProperty("minimal_data");
       var weather_data = App.getApp().getProperty("OpenWeatherMapCurrent");
       if (weather_data != null) {
          var settings = Sys.getDeviceSettings();
@@ -169,7 +169,7 @@ class WindField extends BaseDataField {
    }
 
    function cur_label(value) {
-      var need_minimal = App.getApp().getProperty("minimal_data");
+      //var need_minimal = App.getApp().getProperty("minimal_data");
       var weather_data = App.getApp().getProperty("OpenWeatherMapCurrent");
       if (weather_data != null) {
          var settings = Sys.getDeviceSettings();

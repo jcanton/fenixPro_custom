@@ -152,7 +152,7 @@ class ArcTextComplication extends Ui.Drawable {
          lastRad += ra;
          if (charArray[i] == ' ') {
          } else {
-            var centering = ra / 2.0;
+            //var centering = ra / 2.0;
             var targetRadian =
                baseRadian + (lastRad - ra / 2.0) * accumulation_sign;
 

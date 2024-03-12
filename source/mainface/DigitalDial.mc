@@ -274,7 +274,7 @@ class DigitalDial extends Ui.Drawable {
          var normF = digital_style == 3 ? xmidSemiFont : midSemiFont;
 
          var hourW = dc.getTextWidthInPixels(hourText, boldF).toFloat();
-         var h = dc.getFontHeight(boldF).toFloat();
+         //var h = dc.getFontHeight(boldF).toFloat();
          var minuW = dc.getTextWidthInPixels(minuText, normF).toFloat();
          var half = (hourW + minuW + 6.0) / 2.0;
          var left = center_x_l - half;
@@ -297,7 +297,7 @@ class DigitalDial extends Ui.Drawable {
          );
 
          // Calculate global offsets
-         var f_align = 40;
+         //var f_align = 40;
          second_x_l = center_x_l + half + 1;
          heart_x_l = center_x_l - half - 1;
 

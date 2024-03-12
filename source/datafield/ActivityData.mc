@@ -177,7 +177,7 @@ class CaloField extends BaseDataField {
       var date = Date.info(now, Time.FORMAT_SHORT);
 
       var profile = UserProfile.getProfile();
-      var bonus = profile.gender == UserProfile.GENDER_MALE ? 5.0 : -161.0;
+      //var bonus = profile.gender == UserProfile.GENDER_MALE ? 5.0 : -161.0;
       var age = (date.year - profile.birthYear).toFloat();
       var weight = profile.weight.toFloat() / 1000.0;
       var height = profile.height.toFloat();

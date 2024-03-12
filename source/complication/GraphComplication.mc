@@ -172,8 +172,8 @@ class GraphComplication extends Ui.Drawable {
 
          var HistoryNew = 0;
          var lastyStep = 0;
-         var step_max = -1;
-         var step_min = -1;
+         //var step_max = -1;
+         //var step_min = -1;
 
          var latest_sample = HistoryIter.next();
          if (latest_sample != null) {
@@ -199,11 +199,11 @@ class GraphComplication extends Ui.Drawable {
 
             if (sample != null) {
                HistoryNew = sample.data;
-               if (HistoryNew == HistoryMax) {
-                  step_max = xStep;
-               } else if (HistoryNew == HistoryMin) {
-                  step_min = xStep;
-               }
+               //if (HistoryNew == HistoryMax) {
+               //   step_max = xStep;
+               //} else if (HistoryNew == HistoryMin) {
+               //   step_min = xStep;
+               //}
                if (HistoryNew == null) {
                   // ignore
                } else {

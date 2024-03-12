@@ -267,8 +267,8 @@ class HuwaiiView extends WatchUi.WatchFace {
             if (h != null) {
                heart_text = h.format("%d");
             }
-            var ss = dc.getTextDimensions(heart_text, second_digi_font);
-            var s = (ss[0] * 1.2).toNumber();
+            //var ss = dc.getTextDimensions(heart_text, second_digi_font);
+            //var s = (ss[0] * 1.2).toNumber();
             var s2 = (second_clip_size[0] * 1.25).toNumber();
             dc.setClip(heart_x - s2 - 1, second_y, s2 + 2, second_clip_size[1]);
             dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
