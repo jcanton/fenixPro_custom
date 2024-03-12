@@ -19,7 +19,6 @@ class BackgroundView extends Ui.Drawable {
    }
 
    function draw(dc) {
-      //var isFull = false;
 
       dc.setPenWidth(4);
       dc.setColor(gsecondary_color, Graphics.COLOR_TRANSPARENT);
