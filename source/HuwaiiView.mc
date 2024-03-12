@@ -36,15 +36,12 @@ var gtheme = -1;
 class HuwaiiView extends WatchUi.WatchFace {
 
    var last_battery_hour = null;
-
    var font_padding = 12;
    var font_height_half = 7;
-
    var face_radius;
-
    var did_clear = false;
-
    var screenbuffer = null;
+   var force_redraw = false;
 
    function initialize() {
       WatchFace.initialize();
@@ -67,11 +64,16 @@ class HuwaiiView extends WatchUi.WatchFace {
    // the state of this View and prepare it to be shown. This includes
    // loading resources into memory.
    function onShow() {
+      force_redraw = true;
    }
 
    // Update the view
    function onUpdate(dc) {
-      mainDrawComponents(dc);
+      var clockTime = System.getClockTime();
+      if (force_redraw || clockTime.sec % 5 == 0) {
+         mainDrawComponents(dc);
+         force_redraw = false;
+      }
       // Update always on seconds and HR
       // onPartialUpdate(dc);
    }
@@ -79,19 +81,15 @@ class HuwaiiView extends WatchUi.WatchFace {
    function mainDrawComponents(dc) {
       dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
       dc.clear();
-      dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
-      dc.fillRectangle(0, 0, center_x * 2, center_y * 2);
+      // dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
+      // dc.fillRectangle(0, 0, center_x * 2, center_y * 2);
 
-      var backgroundView = View.findDrawableById("background");
       var bar1 = View.findDrawableById("aBarDisplay");
       var bar2 = View.findDrawableById("bBarDisplay");
       var bar3 = View.findDrawableById("cBarDisplay");
       var bar4 = View.findDrawableById("dBarDisplay");
       var bar5 = View.findDrawableById("eBarDisplay");
       var bar6 = View.findDrawableById("fBarDisplay");
-      var bbar1 = View.findDrawableById("bUBarDisplay");
-      var bbar2 = View.findDrawableById("tUBarDisplay");
-
       bar1.draw(dc);
       bar2.draw(dc);
       bar3.draw(dc);
@@ -99,17 +97,20 @@ class HuwaiiView extends WatchUi.WatchFace {
       bar5.draw(dc);
       bar6.draw(dc);
 
-      dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
-      dc.fillCircle(center_x, center_y, face_radius);
-
+      var backgroundView = View.findDrawableById("background");
       backgroundView.draw(dc);
-      bbar1.draw(dc);
-      bbar2.draw(dc);
+      // dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
+      // dc.fillCircle(center_x, center_y, face_radius);
 
-      var bgraph1 = View.findDrawableById("tGraphDisplay");
-      var bgraph2 = View.findDrawableById("bGraphDisplay");
-      bgraph1.draw(dc);
-      bgraph2.draw(dc);
+      var bbar1 = View.findDrawableById("bUBarDisplay");
+      // var bbar2 = View.findDrawableById("tUBarDisplay");
+      bbar1.draw(dc);
+      // bbar2.draw(dc);
+
+      // var bgraph1 = View.findDrawableById("tGraphDisplay");
+      // var bgraph2 = View.findDrawableById("bGraphDisplay");
+      // bgraph1.draw(dc);
+      // bgraph2.draw(dc);
 
       View.findDrawableById("digital").draw(dc);
    }
