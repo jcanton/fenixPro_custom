@@ -93,57 +93,57 @@ class HuwaiiView extends WatchUi.WatchFace {
       restore_from_resume = true;
       restore_web_requests = true;
       last_resume_milli = System.getTimer();
-      checkBackgroundRequest();
+      // checkBackgroundRequest();
    }
 
    // Update the view
    function onUpdate(dc) {
       var clockTime = System.getClockTime();
-      var current_milli = System.getTimer();
+      // var current_milli = System.getTimer();
       var minute_changed = clockTime.min != last_draw_minute;
 
-      // Calculate battery consumption in days
-      var time_now = Time.now();
-      if (last_battery_hour == null) {
-         last_battery_hour = time_now;
-         last_battery_percent = System.getSystemStats().battery;
-         last_hour_consumption = -1;
-      } else if (time_now.compare(last_battery_hour) >= 60 * 60) {
-         // 60 min
-         last_battery_hour = time_now;
-         var current_battery = System.getSystemStats().battery;
-         var temp_last_battery_percent = last_battery_percent;
-         var temp_last_hour_consumption = temp_last_battery_percent - current_battery;
-         if (temp_last_hour_consumption < 0) {
-            temp_last_hour_consumption = -1;
-         }
-         if (temp_last_hour_consumption > 0) {
-            App.getApp().setProperty(
-               "last_hour_consumption",
-               temp_last_hour_consumption
-            );
+      // // Calculate battery consumption in days
+      // var time_now = Time.now();
+      // if (last_battery_hour == null) {
+      //    last_battery_hour = time_now;
+      //    last_battery_percent = System.getSystemStats().battery;
+      //    last_hour_consumption = -1;
+      // } else if (time_now.compare(last_battery_hour) >= 60 * 60) {
+      //    // 60 min
+      //    last_battery_hour = time_now;
+      //    var current_battery = System.getSystemStats().battery;
+      //    var temp_last_battery_percent = last_battery_percent;
+      //    var temp_last_hour_consumption = temp_last_battery_percent - current_battery;
+      //    if (temp_last_hour_consumption < 0) {
+      //       temp_last_hour_consumption = -1;
+      //    }
+      //    if (temp_last_hour_consumption > 0) {
+      //       App.getApp().setProperty(
+      //          "last_hour_consumption",
+      //          temp_last_hour_consumption
+      //       );
 
-            var consumption_history =
-               App.getApp().getProperty("consumption_history");
-            if (consumption_history == null) {
-               App.getApp().setProperty("consumption_history", [
-                  temp_last_hour_consumption,
-               ]);
-            } else {
-               consumption_history.add(temp_last_hour_consumption);
-               if (consumption_history.size() > 24) {
-                  var object0 = consumption_history[0];
-                  consumption_history.remove(object0);
-               }
-               App.getApp().setProperty(
-                  "consumption_history",
-                  consumption_history
-               );
-            }
-         }
-         last_battery_percent = current_battery;
-         last_hour_consumption = temp_last_hour_consumption;
-      }
+      //       var consumption_history =
+      //          App.getApp().getProperty("consumption_history");
+      //       if (consumption_history == null) {
+      //          App.getApp().setProperty("consumption_history", [
+      //             temp_last_hour_consumption,
+      //          ]);
+      //       } else {
+      //          consumption_history.add(temp_last_hour_consumption);
+      //          if (consumption_history.size() > 24) {
+      //             var object0 = consumption_history[0];
+      //             consumption_history.remove(object0);
+      //          }
+      //          App.getApp().setProperty(
+      //             "consumption_history",
+      //             consumption_history
+      //          );
+      //       }
+      //    }
+      //    last_battery_percent = current_battery;
+      //    last_hour_consumption = temp_last_hour_consumption;
+      // }
 
       // if this device has the clear dc bug
       // use a screen buffer to save having to redraw
@@ -162,14 +162,14 @@ class HuwaiiView extends WatchUi.WatchFace {
          dc.drawBitmap(0, 0, screenbuffer);
       }
 
-      if (restore_web_requests || minute_changed) {
-         // After resuming (`onShow()` called), allow web requests
-         // to keep trying for 5s, or allow it on the minute change
-         if (restore_web_requests && (current_milli - last_resume_milli > 5000)) {
-            restore_web_requests = false;
-         }
-         checkBackgroundRequest();
-      }
+      // if (restore_web_requests || minute_changed) {
+      //    // After resuming (`onShow()` called), allow web requests
+      //    // to keep trying for 5s, or allow it on the minute change
+      //    if (restore_web_requests && (current_milli - last_resume_milli > 5000)) {
+      //       restore_web_requests = false;
+      //    }
+      //    checkBackgroundRequest();
+      // }
 
       if (Application.getApp().getProperty("power_save_mode")) {
          if (restore_from_resume || minute_changed) {
@@ -299,7 +299,7 @@ class HuwaiiView extends WatchUi.WatchFace {
       if (dialDisplay != null) {
          dialDisplay.enableSecondHand();
       }
-      checkBackgroundRequest();
+      // checkBackgroundRequest();
    }
 
    // Terminate any active timers and prepare for slow updates.

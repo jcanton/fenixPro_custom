@@ -20,13 +20,11 @@ Infocal is a digital and analogue watchface, carefully made with high quality re
 - Altitude
 - Temperature (on-device sensor)
 - Temperature (Garmin weather)
-- Temperature (outside, OpenWaather)
-- Temperature (high/low, OpenWeather)
-- Sunrise/Sunset time (OpenWeather)
+- Temperature (outside)
+- Temperature (high/low)
 - Floor climbed
 - Barometer data
 - Countdown to event day
-- Weather condition (OpenWeather)
 - Body battery
 - Stress
 
@@ -40,10 +38,6 @@ https://forums.garmin.com/developer/connect-iq/w/wiki/14/changing-your-app-setti
 
 Infocal Custom needs access to your profile to calculate active calories, distance goal (based on your steps and stride length), and moving distance for a whole week. Infocal Custom does not store this information.
 
-## Why does Infocal Custom need internet/background communication permission?
-
-If using the OpenWeatherMap for any of the features (see feature list above), internet and background communication is used to fetch data from the OpenWeatherMap API.
-
 ## Why isn't battery days remaining not working?
 
 The days remaining battery estimate needs about an 1 hour to calibrate before displaying any information. After calibration, the estimate updates once every hour. If you restart your watch or switch to a different watchface, it will need to calibrate again.
@@ -52,10 +46,6 @@ The days remaining battery estimate needs about an 1 hour to calibrate before di
 
 The group notification complication displays a "C" (connected) if the watch is connected to a phone, otherwise it will display "D" (disconnected).
 
-## Why doesn't sunrise/sunset/OpenWeatherMap temperature display any information?
-
-Sunrise/sunset only works if the watch has a GPS signal. Try starting any activity that requires GPS, then wait for GPS signal. Once a GPS signal is established, return to watch face and check the complication again.
-
 ## Why is my complication data just showing "--"?
 
 Not all complications are supported for all devices, or there is no data to display at the moment. This could be because the data isn't available (e.g., Stress is not always calculated), or the complication relies on a GPS signal that has not been established.
@@ -63,10 +53,6 @@ Not all complications are supported for all devices, or there is no data to disp
 ## A blank square is shown instead of a character?
 
 Currently, this watch face only supports English (or Latin characters).
-
-## How do I get an OpenWeatherMap API?
-
-Go to https://openweathermap.org/, create an account, and log in. Once logged in, click on your account name in the upper right corner, then click on "My API keys". If you do not have any keys, click "Generate" and copy the newly generated key to the Infocal Custom settings.
 
 # Credits (from original Infocal project)
 
