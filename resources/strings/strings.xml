@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">Infocal 2023</string>
+    <string id="AppName">fenixPro_custom</string>
 
     <!-- Basic settings -->
     <string id="power_save_mode">Power saving mode (refresh per minute)</string>
