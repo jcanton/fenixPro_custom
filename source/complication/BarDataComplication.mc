@@ -54,10 +54,6 @@ class BarDataComplication extends BarComplication {
       return dt_field.bar_data();
    }
 
-   function get_weather_icon() {
-      return dt_field.cur_icon();
-   }
-
    function getSettingDataKey() {
       if (position == 0) {
          // upper

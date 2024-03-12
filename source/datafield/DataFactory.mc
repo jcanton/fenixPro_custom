@@ -91,8 +91,6 @@ function buildFieldObject(type) {
       return new AltitudeField(FIELD_TYPE_ALTITUDE);
    } else if (type == FIELD_TYPE_TEMPERATURE) {
       return new TemparatureField(FIELD_TYPE_TEMPERATURE);
-   } else if (type == FIELD_TYPE_SUNRISE_SUNSET) {
-      return new SunField(FIELD_TYPE_SUNRISE_SUNSET);
    } else if (type == FIELD_TYPE_FLOOR) {
       return new FloorField(FIELD_TYPE_FLOOR);
    } else if (type == FIELD_TYPE_GROUP_NOTI) {
@@ -109,18 +107,10 @@ function buildFieldObject(type) {
       return new CountdownField(FIELD_TYPE_COUNTDOWN);
    } else if (type == FIELD_TYPE_WEEKCOUNT) {
       return new WeekCountField(FIELD_TYPE_WEEKCOUNT);
-   } else if (type == FIELD_TYPE_TEMPERATURE_OUT) {
-      return new TemparatureOutField(FIELD_TYPE_TEMPERATURE_OUT);
-   } else if (type == FIELD_TYPE_TEMPERATURE_HL) {
-      return new TemparatureHLField(FIELD_TYPE_TEMPERATURE_HL);
-   } else if (type == FIELD_TYPE_WEATHER) {
-      return new WeatherField(FIELD_TYPE_WEATHER);
    } else if (type == FIELD_TYPE_AMPM_INDICATOR) {
       return new AMPMField(FIELD_TYPE_AMPM_INDICATOR);
    } else if (type == FIELD_TYPE_CTEXT_INDICATOR) {
       return new CTextField(FIELD_TYPE_CTEXT_INDICATOR);
-   } else if (type == FIELD_TYPE_WIND) {
-      return new WindField(FIELD_TYPE_WIND);
    } else if (type == FIELD_TYPE_BODY_BATTERY) {
       return new BodyBatteryField(FIELD_TYPE_BODY_BATTERY);
    } else if (type == FIELD_TYPE_STRESS) {
@@ -135,8 +125,6 @@ function buildFieldObject(type) {
       return new WeatherGarminField(FIELD_TYPE_WEATHER_GARMIN);
    } else if (type == FIELD_TYPE_TEMPERATURE_HL_GARMIN) {
       return new TemperatureHLGarminField(FIELD_TYPE_TEMPERATURE_HL_GARMIN);
-   } else if (type == FIELD_TYPE_AIR_QUALITY) {
-      return new AirQualityField(FIELD_TYPE_AIR_QUALITY);
    }
 
    return new EmptyDataField(FIELD_TYPE_EMPTY);

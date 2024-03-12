@@ -30,40 +30,7 @@ class BatteryField extends BaseDataField {
    }
 
    function cur_label(value) {
-      var battery_format = App.getApp().getProperty("battery_format");
-      var hour_consumption = last_hour_consumption;
-      if (hour_consumption <= 0) {
-         var consumption_history =
-            App.getApp().getProperty("consumption_history");
-         if (consumption_history != null) {
-            var total = 0.0;
-            for (var i = 0; i < consumption_history.size(); i++) {
-               // Code to do in a loop
-               total += consumption_history[i];
-            }
-            hour_consumption = total / consumption_history.size();
-         } else {
-            var hour_consumption_saved = App.getApp().getProperty(
-               "last_hour_consumption"
-            );
-            if (hour_consumption_saved != null) {
-               hour_consumption = hour_consumption_saved;
-            }
-         }
-      }
-      hour_consumption = hour_consumption.toFloat();
-
-      if (battery_format == 0 || hour_consumption == -1) {
-         // show percent
-         return Lang.format("BAT $1$%", [Math.round(value).format("%d")]);
-      } else {
-         if (hour_consumption == 0) {
-            return Lang.format("$1$ DAYS", [99]);
-         }
-         var hour_left = value / (hour_consumption * 1.0);
-         var day_left = hour_left / 24.0;
-         return Lang.format("$1$ DAYS", [day_left.format("%0.1f")]);
-      }
+      return Lang.format("BAT $1$%", [Math.round(value).format("%d")]);
    }
 
    function bar_data() {
