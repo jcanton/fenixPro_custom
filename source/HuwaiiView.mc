@@ -75,10 +75,22 @@ class HuwaiiView extends WatchUi.WatchFace {
       force_redraw_all = true;
    }
 
+   // Called when this View is removed from the screen. Save the state of this
+   // View here. This includes freeing resources from memory.
+   function onHide() {
+   }
    // Called when this View is brought to the foreground. Restore
    // the state of this View and prepare it to be shown. This includes
    // loading resources into memory.
    function onShow() {
+      force_redraw_all = true;
+   }
+   // Terminate any active timers and prepare for slow updates.
+   function onEnterSleep() {
+   }
+   // The user has just looked at their watch. Timers and animations may be
+   // started here.
+   function onExitSleep() {
       force_redraw_all = true;
    }
 
@@ -158,19 +170,6 @@ class HuwaiiView extends WatchUi.WatchFace {
    //       }
    //    }
    // }
-
-   // Called when this View is removed from the screen. Save the state of this
-   // View here. This includes freeing resources from memory.
-   function onHide() {
-   }
-
-   // The user has just looked at their watch. Timers and animations may be started here.
-   function onExitSleep() {
-   }
-
-   // Terminate any active timers and prepare for slow updates.
-   function onEnterSleep() {
-   }
 
    function checkGlobals() {
       checkTheme();
