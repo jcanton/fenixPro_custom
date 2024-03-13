@@ -166,40 +166,17 @@ class HuwaiiView extends WatchUi.WatchFace {
    //    }
    // }
 
-   // Called when this View is removed from the screen. Save the
-   // state of this View here. This includes freeing resources from
-   // memory.
+   // Called when this View is removed from the screen. Save the state of this
+   // View here. This includes freeing resources from memory.
    function onHide() {
    }
 
    // The user has just looked at their watch. Timers and animations may be started here.
    function onExitSleep() {
-      var dialDisplay = View.findDrawableById("analog");
-      if (dialDisplay != null) {
-         dialDisplay.enableSecondHand();
-      }
    }
 
    // Terminate any active timers and prepare for slow updates.
    function onEnterSleep() {
-      if (Application.getApp().getProperty("use_analog")) {
-         var dialDisplay = View.findDrawableById("analog");
-         if (dialDisplay != null) {
-            dialDisplay.disableSecondHand();
-         }
-      } else {
-         if (Application.getApp().getProperty("always_on_second")) {
-            var dc = screenbuffer.getDc();
-            dc.setClip(
-               second_x,
-               second_y,
-               second_clip_size[0],
-               second_clip_size[1]
-            );
-            dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
-            dc.clear();
-         }
-      }
    }
 
    function checkGlobals() {
@@ -290,11 +267,6 @@ class HuwaiiView extends WatchUi.WatchFace {
       second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
       second_font_height_half = 7;
       second_clip_size = [20, 15];
-   }
-
-   function removeAllFonts() {
-      View.findDrawableById("analog").removeFont();
-      View.findDrawableById("digital").removeFont();
    }
 
 }
