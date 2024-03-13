@@ -35,13 +35,10 @@ var gtheme = -1;
 
 class HuwaiiView extends WatchUi.WatchFace {
 
-   var last_battery_hour = null;
    var font_padding = 12;
-   var font_height_half = 7;
    var face_radius;
-   var did_clear = false;
-   var screenbuffer = null;
-   var force_redraw = false;
+   var force_redraw_all = false;
+   var force_redraw_cmp = false;
 
    var backgroundView;
    var bar1, bar2, bar3, bar4, bar5, bar6;
@@ -67,7 +64,7 @@ class HuwaiiView extends WatchUi.WatchFace {
       backgroundView = View.findDrawableById("background");
       bar1 = View.findDrawableById("aBarDisplay");
       bar2 = View.findDrawableById("bBarDisplay");
-      bar3 = View.findDrawableById("cBarDisplay");
+      // bar3 = View.findDrawableById("cBarDisplay");
       bar4 = View.findDrawableById("dBarDisplay");
       bar5 = View.findDrawableById("eBarDisplay");
       bar6 = View.findDrawableById("fBarDisplay");
@@ -75,57 +72,38 @@ class HuwaiiView extends WatchUi.WatchFace {
       // bbar2 = View.findDrawableById("tUBarDisplay");
       // bgraph1 = View.findDrawableById("tGraphDisplay");
       // bgraph2 = View.findDrawableById("bGraphDisplay");
+      force_redraw_all = true;
    }
 
    // Called when this View is brought to the foreground. Restore
    // the state of this View and prepare it to be shown. This includes
    // loading resources into memory.
    function onShow() {
-      force_redraw = true;
+      force_redraw_all = true;
    }
 
    // Update the view
    function onUpdate(dc) {
-      /*
-      // draws faster without the arcText complications but it doesn't clear the
-      // white
-      if (force_redraw) {
+      var clockTime = System.getClockTime();
+      if (force_redraw_all || clockTime.sec % 10 == 0) {
          dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
          dc.clear();
-         var backgroundView = View.findDrawableById("background");
          backgroundView.draw(dc);
          View.findDrawableById("digital").draw(dc);
-         force_redraw = false;
-         return;
+         force_redraw_all = false;
+         force_redraw_cmp = true;
       }
-      */
-      var clockTime = System.getClockTime();
-      if (force_redraw || clockTime.sec % 5 == 0) {
-         drawMainComponents(dc);
-         force_redraw = false;
-      }
-   }
-
-   function drawMainComponents(dc) {
-      dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
-      dc.clear();
-
-      bar1.draw(dc);
-      bar2.draw(dc);
-      bar3.draw(dc);
-      bar4.draw(dc);
-      bar5.draw(dc);
-      bar6.draw(dc);
-
-      bbar1.draw(dc);
-      // bbar2.draw(dc);
-
-      // bgraph1.draw(dc);
-      // bgraph2.draw(dc);
-
-      backgroundView.draw(dc);
-      View.findDrawableById("digital").draw(dc);
-
+      bar1.draw(dc, force_redraw_cmp);
+      bar2.draw(dc, force_redraw_cmp);
+      // bar3.draw(dc, force_redraw_cmp);
+      bar4.draw(dc, force_redraw_cmp);
+      bar5.draw(dc, force_redraw_cmp);
+      bar6.draw(dc, force_redraw_cmp);
+      bbar1.draw(dc, force_redraw_cmp);
+      // bbar2.draw(dc, force_redraw_cmp);
+      // bgraph1.draw(dc, force_redraw_cmp);
+      // bgraph2.draw(dc, force_redraw_cmp);
+      force_redraw_cmp = false;
    }
 
    // function onPartialUpdate(dc) {

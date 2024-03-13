@@ -18,11 +18,14 @@ function getBarDataComplicationSettingDataKey(position) {
 class BarDataComplication extends BarComplication {
    var dt_field;
    var field_type;
+   var curval;
+   var prevval;
 
    function initialize(params) {
       BarComplication.initialize(params);
       field_type = params.get(:field_type);
       dt_field = buildFieldObject(field_type);
+      prevval = dt_field.min_val()-1;
    }
 
    function min_val() {
@@ -47,7 +50,7 @@ class BarDataComplication extends BarComplication {
    }
 
    function need_draw() {
-      return dt_field.need_draw();
+      return curval != prevval;
    }
 
    function bar_data() {
@@ -64,14 +67,16 @@ class BarDataComplication extends BarComplication {
       }
    }
 
-   function draw(dc) {
+   function draw(dc, force_draw) {
       field_type = getSettingDataKey();
       if (field_type != dt_field.field_id()) {
          dt_field = buildFieldObject(field_type);
       }
 
-      if (need_draw()) {
+      curval = cur_val(); 
+      if (force_draw || need_draw()) {
          BarComplication.draw(dc);
+         prevval = curval;
       }
    }
 }

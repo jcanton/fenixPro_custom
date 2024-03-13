@@ -3,6 +3,8 @@ using Toybox.Math;
 using Toybox.Graphics;
 using Toybox.System;
 using Toybox.Application;
+using Toybox.Activity;
+using Toybox.ActivityMonitor;
 
 var kerning_ratios = {
    ' ' => 0.4,
@@ -56,6 +58,7 @@ function getArcTextComplicationSettingDataKey(angle) {
 
 class ArcTextComplication extends Ui.Drawable {
    hidden var barRadius;
+   hidden var txtRadius;
    hidden var baseRadian;
    hidden var baseDegree;
    hidden var alignment;
@@ -69,6 +72,9 @@ class ArcTextComplication extends Ui.Drawable {
    var angle;
    var kerning = 1.0;
 
+   var dt_field;
+   var field_type;
+
    function initialize(params) {
       Drawable.initialize(params);
       barRadius = center_x - ((13 * center_x) / 120).toNumber();
@@ -77,6 +83,7 @@ class ArcTextComplication extends Ui.Drawable {
          barRadius = center_x - 11;
       } else if (center_x == 130) {
          kerning = 0.95;
+         barRadius = barRadius + 3;
       } else if (center_x == 195) {
          kerning = 0.95;
          barRadius = barRadius + 4;
@@ -89,47 +96,58 @@ class ArcTextComplication extends Ui.Drawable {
       text = params.get(:text);
       angle = params.get(:angle);
       perCharRadius = (kerning * 4.7 * Math.PI) / 100;
-      barRadius += (((baseDegree < 180 ? 8 : -3) * center_x) / 120).toNumber();
+      //barRadius += (((baseDegree < 180 ? 8 : -3) * center_x) / 120).toNumber();
+      txtRadius = barRadius-1 + (((baseDegree < 180 ? 8 : -3) * center_x) / 120).toNumber();
       accumulation_sign = baseDegree < 180 ? -1 : 1;
 
       alignment = Graphics.TEXT_JUSTIFY_VCENTER | Graphics.TEXT_JUSTIFY_CENTER;
 
-      last_draw_text = "";
+      last_draw_text = text;
+
+      field_type = params.get(:field_type);
+      dt_field = buildFieldObject(field_type);
    }
 
    function get_text() {
-      return text;
+      var curval = dt_field.cur_val();
+      var pre_label = dt_field.cur_label(curval);
+      return pre_label;
+   }
+
+   function getSettingDataKey() {
+      return Application.getApp().getProperty("comp" + angle + "h");
    }
 
    function need_draw() {
-      return true;
+      return !text.equals(last_draw_text);
    }
 
-   function draw(dc) {
-      dc.setPenWidth(1);
+   function draw(dc, force_draw) {
 
-      var text = get_text();
+      text = get_text();
 
-      dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
+      if (force_draw || need_draw()) {
+         dc.setPenWidth(1);
+         dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
 
-      dc.setPenWidth(20);
-      var target_r =
-         barRadius -
-         (((baseDegree < 180 ? 6 : -3) * center_x) / 120).toNumber();
-      dc.drawArc(
-         center_x,
-         center_y,
-         target_r,
-         Graphics.ARC_CLOCKWISE,
-         360.0 - (baseDegree - 30.0),
-         360.0 - (baseDegree + 30.0)
-      );
+         dc.setPenWidth(20);
+         var target_r =
+            barRadius; // - (((baseDegree < 180 ? 6 : -3) * center_x) / 120).toNumber();
+         dc.drawArc(
+            center_x,
+            center_y,
+            target_r,
+            Graphics.ARC_CLOCKWISE,
+            360.0 - (baseDegree - 28.0),
+            360.0 - (baseDegree + 28.0)
+         );
 
-      dc.setPenWidth(1);
-      dc.setColor(gmain_color, Graphics.COLOR_TRANSPARENT);
+         dc.setPenWidth(1);
+         dc.setColor(gmain_color, Graphics.COLOR_TRANSPARENT);
 
-      drawArcText(dc, text);
-      last_draw_text = text;
+         drawArcText(dc, text);
+         last_draw_text = text;
+      }
    }
 
    hidden function drawArcText(dc, text) {
@@ -160,8 +178,8 @@ class ArcTextComplication extends Ui.Drawable {
             var targetRadian =
                baseRadian + (lastRad - ra / 2.0) * accumulation_sign;
 
-            var labelCurX = convertCoorX(targetRadian, barRadius);
-            var labelCurY = convertCoorY(targetRadian, barRadius);
+            var labelCurX = convertCoorX(targetRadian, txtRadius);
+            var labelCurY = convertCoorY(targetRadian, txtRadius);
 
             set_font(targetRadian);
 
