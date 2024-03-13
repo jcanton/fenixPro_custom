@@ -93,17 +93,19 @@ class HuwaiiView extends WatchUi.WatchFace {
          force_redraw_all = false;
          force_redraw_cmp = true;
       }
-      bar1.draw(dc, force_redraw_cmp);
-      bar2.draw(dc, force_redraw_cmp);
-      // bar3.draw(dc, force_redraw_cmp);
-      bar4.draw(dc, force_redraw_cmp);
-      bar5.draw(dc, force_redraw_cmp);
-      bar6.draw(dc, force_redraw_cmp);
-      bbar1.draw(dc, force_redraw_cmp);
-      // bbar2.draw(dc, force_redraw_cmp);
-      // bgraph1.draw(dc, force_redraw_cmp);
-      // bgraph2.draw(dc, force_redraw_cmp);
-      force_redraw_cmp = false;
+      if (force_redraw_cmp || clockTime.sec % 3 == 0) {
+         bar1.draw(dc, force_redraw_cmp);
+         bar2.draw(dc, force_redraw_cmp);
+         // bar3.draw(dc, force_redraw_cmp);
+         bar4.draw(dc, force_redraw_cmp);
+         bar5.draw(dc, force_redraw_cmp);
+         bar6.draw(dc, force_redraw_cmp);
+         bbar1.draw(dc, force_redraw_cmp);
+         // bbar2.draw(dc, force_redraw_cmp);
+         // bgraph1.draw(dc, force_redraw_cmp);
+         // bgraph2.draw(dc, force_redraw_cmp);
+         force_redraw_cmp = false;
+      }
    }
 
    // function onPartialUpdate(dc) {
