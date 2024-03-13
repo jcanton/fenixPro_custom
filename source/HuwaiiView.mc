@@ -101,18 +101,14 @@ class HuwaiiView extends WatchUi.WatchFace {
       */
       var clockTime = System.getClockTime();
       if (force_redraw || clockTime.sec % 5 == 0) {
-         mainDrawComponents(dc);
+         drawMainComponents(dc);
          force_redraw = false;
       }
-      // Update always on seconds and HR
-      // onPartialUpdate(dc);
    }
 
-   function mainDrawComponents(dc) {
+   function drawMainComponents(dc) {
       dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
       dc.clear();
-      // dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
-      // dc.fillRectangle(0, 0, center_x * 2, center_y * 2);
 
       bar1.draw(dc);
       bar2.draw(dc);
@@ -121,17 +117,15 @@ class HuwaiiView extends WatchUi.WatchFace {
       bar5.draw(dc);
       bar6.draw(dc);
 
-      backgroundView.draw(dc);
-      // dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
-      // dc.fillCircle(center_x, center_y, face_radius);
-
       bbar1.draw(dc);
       // bbar2.draw(dc);
 
       // bgraph1.draw(dc);
       // bgraph2.draw(dc);
 
+      backgroundView.draw(dc);
       View.findDrawableById("digital").draw(dc);
+
    }
 
    // function onPartialUpdate(dc) {
