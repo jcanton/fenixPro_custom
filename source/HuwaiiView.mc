@@ -69,6 +69,19 @@ class HuwaiiView extends WatchUi.WatchFace {
 
    // Update the view
    function onUpdate(dc) {
+      /*
+      // draws faster without the arcText complications but it doesn't clear the
+      // white
+      if (force_redraw) {
+         dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
+         dc.clear();
+         var backgroundView = View.findDrawableById("background");
+         backgroundView.draw(dc);
+         View.findDrawableById("digital").draw(dc);
+         force_redraw = false;
+         return;
+      }
+      */
       var clockTime = System.getClockTime();
       if (force_redraw || clockTime.sec % 5 == 0) {
          mainDrawComponents(dc);
