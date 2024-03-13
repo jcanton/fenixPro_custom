@@ -1,37 +1,37 @@
 <layout id="WatchFace">
 	<drawable id="background" class="BackgroundView"></drawable>
 	
-	<drawable id="aBarDisplay" class="Complication">	             
+	<drawable id="aBarDisplay" class="ArcTextComplication">	             
         <param name="base">270</param>	             
         <param name="angle">12</param>
         <param name="text">"BATT 90"</param>
         <param name="field_type">1</param>
     </drawable>
-    <drawable id="bBarDisplay" class="Complication">	             
+    <drawable id="bBarDisplay" class="ArcTextComplication">	             
         <param name="base">210</param>
         <param name="angle">10</param>
         <param name="text">"STEP 9K"</param>
         <param name="field_type">2</param>
     </drawable>
-    <drawable id="cBarDisplay" class="Complication">	             
+    <drawable id="cBarDisplay" class="ArcTextComplication">	             
         <param name="base">330</param>
         <param name="angle">2</param>
         <param name="text">"HR 72"</param>
         <param name="field_type">9</param>
     </drawable>
-    <drawable id="dBarDisplay" class="Complication">	             
+    <drawable id="dBarDisplay" class="ArcTextComplication">	             
         <param name="base">30</param>
         <param name="angle">4</param>
         <param name="text">"STEP 9K"</param>
         <param name="field_type">3</param>
     </drawable>
-    <drawable id="eBarDisplay" class="Complication">	             
+    <drawable id="eBarDisplay" class="ArcTextComplication">	             
         <param name="base">90</param>
         <param name="angle">6</param>
         <param name="text">"BATT 90"</param>
         <param name="field_type">4</param>
     </drawable>
-    <drawable id="fBarDisplay" class="Complication">	             
+    <drawable id="fBarDisplay" class="ArcTextComplication">	             
         <param name="base">150</param>
         <param name="angle">8</param>
         <param name="text">"HR 72"</param>

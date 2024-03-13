@@ -50,6 +50,10 @@ var kerning_ratios = {
    '°' => 0.47,
 };
 
+function getArcTextComplicationSettingDataKey(angle) {
+   return Application.getApp().getProperty("comp" + angle + "h");
+}
+
 class ArcTextComplication extends Ui.Drawable {
    hidden var barRadius;
    hidden var baseRadian;

@@ -88,12 +88,12 @@ class HuwaiiApp extends Application.AppBase {
    //! Populates a list of all the data field ids in use
    function updateCurrentDataFieldIds() as Void {
       var fieldIds = [
-         getComplicationSettingDataKey(12),
-         getComplicationSettingDataKey(10),
-         getComplicationSettingDataKey(2),
-         getComplicationSettingDataKey(4),
-         getComplicationSettingDataKey(6),
-         getComplicationSettingDataKey(8),
+         getArcTextComplicationSettingDataKey(12),
+         getArcTextComplicationSettingDataKey(10),
+         getArcTextComplicationSettingDataKey(2),
+         getArcTextComplicationSettingDataKey(4),
+         getArcTextComplicationSettingDataKey(6),
+         getArcTextComplicationSettingDataKey(8),
          getBarDataComplicationSettingDataKey(0),
          getBarDataComplicationSettingDataKey(1),
          $.getGraphComplicationDataKey(0),
