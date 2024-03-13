@@ -43,6 +43,11 @@ class HuwaiiView extends WatchUi.WatchFace {
    var screenbuffer = null;
    var force_redraw = false;
 
+   var backgroundView;
+   var bar1, bar2, bar3, bar4, bar5, bar6;
+   var bbar1, bbar2;
+   var bgraph1, bgraph2;
+
    function initialize() {
       WatchFace.initialize();
    }
@@ -58,6 +63,18 @@ class HuwaiiView extends WatchUi.WatchFace {
       setLayout(Rez.Layouts.WatchFace(dc));
 
       checkGlobals();
+
+      backgroundView = View.findDrawableById("background");
+      bar1 = View.findDrawableById("aBarDisplay");
+      bar2 = View.findDrawableById("bBarDisplay");
+      bar3 = View.findDrawableById("cBarDisplay");
+      bar4 = View.findDrawableById("dBarDisplay");
+      bar5 = View.findDrawableById("eBarDisplay");
+      bar6 = View.findDrawableById("fBarDisplay");
+      bbar1 = View.findDrawableById("bUBarDisplay");
+      // bbar2 = View.findDrawableById("tUBarDisplay");
+      // bgraph1 = View.findDrawableById("tGraphDisplay");
+      // bgraph2 = View.findDrawableById("bGraphDisplay");
    }
 
    // Called when this View is brought to the foreground. Restore
@@ -97,12 +114,6 @@ class HuwaiiView extends WatchUi.WatchFace {
       // dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
       // dc.fillRectangle(0, 0, center_x * 2, center_y * 2);
 
-      var bar1 = View.findDrawableById("aBarDisplay");
-      var bar2 = View.findDrawableById("bBarDisplay");
-      var bar3 = View.findDrawableById("cBarDisplay");
-      var bar4 = View.findDrawableById("dBarDisplay");
-      var bar5 = View.findDrawableById("eBarDisplay");
-      var bar6 = View.findDrawableById("fBarDisplay");
       bar1.draw(dc);
       bar2.draw(dc);
       bar3.draw(dc);
@@ -110,18 +121,13 @@ class HuwaiiView extends WatchUi.WatchFace {
       bar5.draw(dc);
       bar6.draw(dc);
 
-      var backgroundView = View.findDrawableById("background");
       backgroundView.draw(dc);
       // dc.setColor(gbackground_color, Graphics.COLOR_TRANSPARENT);
       // dc.fillCircle(center_x, center_y, face_radius);
 
-      var bbar1 = View.findDrawableById("bUBarDisplay");
-      // var bbar2 = View.findDrawableById("tUBarDisplay");
       bbar1.draw(dc);
       // bbar2.draw(dc);
 
-      // var bgraph1 = View.findDrawableById("tGraphDisplay");
-      // var bgraph2 = View.findDrawableById("bGraphDisplay");
       // bgraph1.draw(dc);
       // bgraph2.draw(dc);
 
