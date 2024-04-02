@@ -68,7 +68,7 @@ class ActiveVigorousField extends BaseDataField {
    function max_val() {
       var activityInfo = ActivityMonitor.getInfo();
       return activityInfo.activeMinutesWeekGoal.toFloat();
-  } 
+   } 
 
    function cur_val() {
       var activityInfo = ActivityMonitor.getInfo();

@@ -45,7 +45,8 @@ class BarDataComplication extends BarComplication {
 
    function get_title() {
       var curval = dt_field.cur_val();
-      var pre_label = dt_field.cur_label(curval);
+      //var pre_label = dt_field.cur_label(curval);
+      var pre_label = "";
       return pre_label;
    }
 

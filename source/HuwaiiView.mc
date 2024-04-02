@@ -45,6 +45,9 @@ class HuwaiiView extends WatchUi.WatchFace {
    var bbar1, bbar2;
    var bgraph1, bgraph2;
 
+   var battValue;
+   var oldBattValue = 313;
+
    function initialize() {
       WatchFace.initialize();
    }
@@ -96,8 +99,8 @@ class HuwaiiView extends WatchUi.WatchFace {
 
    // Update the view
    function onUpdate(dc) {
-      var clockTime = System.getClockTime();
-      if (force_redraw_all || clockTime.sec % 10 == 0) {
+      var date = Date.info(Time.now(), Time.FORMAT_SHORT);
+      if (force_redraw_all || date.sec % 10 == 0) {
          dc.setColor(Graphics.COLOR_TRANSPARENT, gbackground_color);
          dc.clear();
          backgroundView.draw(dc);
@@ -105,7 +108,7 @@ class HuwaiiView extends WatchUi.WatchFace {
          force_redraw_all = false;
          force_redraw_cmp = true;
       }
-      if (force_redraw_cmp || clockTime.sec % 3 == 0) {
+      if (force_redraw_cmp || date.sec % 3 == 0) {
          bar1.draw(dc, force_redraw_cmp);
          bar2.draw(dc, force_redraw_cmp);
          // bar3.draw(dc, force_redraw_cmp);
@@ -117,6 +120,15 @@ class HuwaiiView extends WatchUi.WatchFace {
          // bgraph1.draw(dc, force_redraw_cmp);
          // bgraph2.draw(dc, force_redraw_cmp);
          force_redraw_cmp = false;
+      }
+      if (force_redraw_cmp || date.sec % 10 == 0) {
+         battValue = Math.round(System.getSystemStats().battery).toNumber();
+         if (battValue != oldBattValue) {
+            var csvString = Lang.format("$1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$", [date.year.format("%04d"), date.month.format("%02d"), date.day.format("%02d"), date.hour.format("%02d"), date.min.format("%02d"), date.sec.format("%02d"), oldBattValue.format("%03d"), battValue.format("%03d")]);
+            System.println(csvString);
+            //Application.Storage.setValue("battValue", battValue);
+            oldBattValue = battValue;
+         }
       }
    }
 
