@@ -45,8 +45,8 @@ class HuwaiiView extends WatchUi.WatchFace {
    var bbar1, bbar2;
    var bgraph1, bgraph2;
 
-   var battValue;
-   var oldBattValue = 313;
+   // var battValue;
+   // var oldBattValue = 313;
 
    function initialize() {
       WatchFace.initialize();
@@ -121,15 +121,15 @@ class HuwaiiView extends WatchUi.WatchFace {
          // bgraph2.draw(dc, force_redraw_cmp);
          force_redraw_cmp = false;
       }
-      if (force_redraw_cmp || date.sec % 10 == 0) {
-         battValue = Math.round(System.getSystemStats().battery).toNumber();
-         if (battValue != oldBattValue) {
-            var csvString = Lang.format("$1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$", [date.year.format("%04d"), date.month.format("%02d"), date.day.format("%02d"), date.hour.format("%02d"), date.min.format("%02d"), date.sec.format("%02d"), oldBattValue.format("%03d"), battValue.format("%03d")]);
-            System.println(csvString);
-            //Application.Storage.setValue("battValue", battValue);
-            oldBattValue = battValue;
-         }
-      }
+      // if (force_redraw_cmp || date.sec % 10 == 0) {
+      //    battValue = Math.round(System.getSystemStats().battery).toNumber();
+      //    if (battValue != oldBattValue) {
+      //       var csvString = Lang.format("$1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$", [date.year.format("%04d"), date.month.format("%02d"), date.day.format("%02d"), date.hour.format("%02d"), date.min.format("%02d"), date.sec.format("%02d"), oldBattValue.format("%03d"), battValue.format("%03d")]);
+      //       System.println(csvString);
+      //       //Application.Storage.setValue("battValue", battValue);
+      //       oldBattValue = battValue;
+      //    }
+      // }
    }
 
    // function onPartialUpdate(dc) {
